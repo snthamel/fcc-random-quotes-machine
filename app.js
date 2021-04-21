@@ -6,8 +6,7 @@ $(document).ready(function () {
 		dataType: 'json',
 		success: function (data) {
 			quotes = data;
-			$('span#text').html(quotes[0].text);
-			$('span#author').html(quotes[0].author);
+			showRandomQuote();
 		},
 		error: function (xhr, status, error) {
 			console.log(error);
