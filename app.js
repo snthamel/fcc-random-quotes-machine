@@ -1,10 +1,16 @@
 let quotes = [];
-fetch("https://type.fit/api/verses")
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    quotes = data;
-		document.getElementById('text').html(quotes[0].text);
-		document.getElementById('author').html(quotes[0].author);
-  });
+$(document).ready(function () {
+	$.ajax({
+		url: "https://type.fit/api/quotes",
+		method: 'GET',
+		dataType: 'json',
+		success: function (data) {
+			quotes = data;
+			$('span#text').html(quotes[0].text);
+			$('span#author').html(quotes[0].author);
+		},
+		error: function (xhr, status, error) {
+			console.log(error);
+		}
+	});
+});
