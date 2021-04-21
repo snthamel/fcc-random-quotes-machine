@@ -13,4 +13,13 @@ $(document).ready(function () {
 			console.log(error);
 		}
 	});
+
+	$('button#new-quote').on('click', showRandomQuote);
 });
+
+function showRandomQuote() {
+	var randomIndex = Math.floor(Math.random() * quotes.length);
+	var randomQuote = quotes[randomIndex];
+	$('span#text').html(randomQuote.text);
+	$('span#author').html(randomQuote.author);
+}
